@@ -241,7 +241,9 @@ export class BaseObject implements IClone<BaseObject>, IDisposer {
 			// TODO is this needed ?
 			if (themes) {
 				$array.each(themes, (theme, index) => {
-					theme(this);
+					if(typeof theme === "function"){
+						theme(this);				       
+					}
 				});
 			}
 		}
